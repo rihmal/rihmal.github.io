@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RIHMAL</title>
+        <meta content="initial-scale=1.0, width=device-width" name="viewport">
+        <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <audio hidden id="audio" src="typing.mp3" type="audio/mpeg"></audio>
+
+        <div id="typedtext"></div>
+        <div class="overlay">
+
+<img src="paper.png" onclick="window.location.href='main.html';">
+            
+
+        <script>
+var aText = new Array(
+"1 Feb 2021 ...", 
+"Little Midget and his fellow criminals carried out a coup d'etat in Myanmar ...",
+"Gross human right violations and the murders they have been committing ...",
+"We will never forgive, we will never forget ...",
+"May they rot in hell for the hell they caused here on Earth ..."
+);
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+ 
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+             audio.play();
+
+function typewriter()
+{
+ sContents =  ' ';
+ iRow = Math.max(0, iIndex-iScrollAt);
+ var destination = document.getElementById("typedtext");
+ 
+ while ( iRow < iIndex ) {
+  sContents += aText[iRow++] + '<br />';
+ }
+ destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+ if ( iTextPos++ == iArrLength ) {
+  iTextPos = 0;
+  iIndex++;
+  if ( iIndex != aText.length ) {
+   iArrLength = aText[iIndex].length;
+   setTimeout("typewriter()", 500);
+  }
+ } else {
+  setTimeout("typewriter()", iSpeed);
+ }
+}
+
+
+typewriter();</script>
+
+
+    </body>
+</html>
